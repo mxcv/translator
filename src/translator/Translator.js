@@ -3,13 +3,26 @@ import Languages from '../languages/Languages'
 import { ReactComponent as SwapIcon } from './swap.svg';
 import './Translator.css'
 
+function swapLanguages(from, setFrom, to, setTo) {
+    const temp = from
+    setFrom(to)
+    setTo(temp)
+}
+
 function Translator() {
+    const [from, setFrom] = useState('en')
+    const [to, setTo] = useState('uk')
+    
     return (
         <form className='Translator container-md'>
             <div className='d-flex flex-row mt-2'>
-                <Languages />
-                <button type='button' className='btn btn-outline-secondary mx-2'><SwapIcon /></button>
-                <Languages />
+                <Languages selected={from} onChange={e => setFrom(e.target.value)} />
+                <button type='button'
+                    onClick={() => swapLanguages(from, setFrom, to, setTo)}
+                    className='btn btn-outline-secondary mx-2'>
+                    <SwapIcon />
+                </button>
+                <Languages selected={to} onChange={e => setTo(e.target.value)} />
             </div>
             <div className='row mt-0 g-2'>
                 <div className='col-lg'>
