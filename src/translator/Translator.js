@@ -9,9 +9,8 @@ function swapLanguages(from, setFrom, to, setTo) {
     setTo(temp)
 }
 
-function translate(e, from, to, text, setTranslation) {
-    e.preventDefault();
-
+function translate(e, from, to, text, setTranslation, setIsLoading) {
+    e.preventDefault()
     const options = {
         method: 'POST',
         headers: {
@@ -21,11 +20,12 @@ function translate(e, from, to, text, setTranslation) {
         },
         body: `{"text":"${text}","source":"${from}","target":"${to}"}`
     };
-    
+    setIsLoading(true)
     fetch(`https://${process.env.REACT_APP_API_HOST}/translate`, options)
         .then(response => response.json())
         .then(response => setTranslation(response.translations.translation))
-        .catch(err => console.error(err));
+        .catch(err => console.error(err))
+        .finally(() => setIsLoading(false))
 }
 
 function Translator() {
@@ -33,9 +33,10 @@ function Translator() {
     const [to, setTo] = useState('uk')
     const [text, setText] = useState('')
     const [translation, setTranslation] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
-        <form onSubmit={e => translate(e, from, to, text, setTranslation)} className='Translator container-md'>
+        <form onSubmit={e => translate(e, from, to, text, setTranslation, setIsLoading)} className='Translator container-md'>
             <div className='d-flex flex-row mt-2'>
                 <Languages selected={from} onChange={e => setFrom(e.target.value)} />
                 <button type='button'
@@ -50,11 +51,11 @@ function Translator() {
                     <textarea value={text} onChange={e => setText(e.target.value)} className='form-control' rows='10' />
                 </div>
                 <div className='col-lg'>
-                    <textarea value={translation} onChange={e => setTranslation(e.target.value)} className='form-control h-100 Translator-result' readOnly placeholder='Translation' />
+                    <textarea value={translation} onChange={e => setTranslation(e.target.value)} disabled={isLoading} className='form-control h-100 Translator-result' readOnly placeholder='Translation' />
                 </div>
             </div>
             <div className='row justify-content-end m-0 mt-2'>
-                <button className='col-md-auto btn btn-outline-primary'>Translate</button>
+                <button disabled={isLoading} className='col-md-auto btn btn-outline-primary'>Translate</button>
             </div>
         </form>
     )
