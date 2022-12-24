@@ -3,31 +3,6 @@ import Languages from '../languages/Languages'
 import { ReactComponent as SwapIcon } from './swap.svg';
 import './Translator.css'
 
-function swapLanguages(from, setFrom, to, setTo) {
-    const temp = from
-    setFrom(to)
-    setTo(temp)
-}
-
-function translate(e, from, to, text, setTranslation, setIsLoading) {
-    e.preventDefault()
-    const options = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-            'X-RapidAPI-Host': process.env.REACT_APP_API_HOST
-        },
-        body: `{"text":"${text}","source":"${from}","target":"${to}"}`
-    };
-    setIsLoading(true)
-    fetch(`https://${process.env.REACT_APP_API_HOST}/translate`, options)
-        .then(response => response.json())
-        .then(response => setTranslation(response.translations.translation))
-        .catch(err => console.error(err))
-        .finally(() => setIsLoading(false))
-}
-
 function Translator() {
     const [from, setFrom] = useState('en')
     const [to, setTo] = useState('uk')
@@ -35,13 +10,36 @@ function Translator() {
     const [translation, setTranslation] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
+    function swapLanguages() {
+        const temp = from
+        setFrom(to)
+        setTo(temp)
+    }
+    
+    function translate(e) {
+        e.preventDefault()
+        const options = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+                'X-RapidAPI-Host': process.env.REACT_APP_API_HOST
+            },
+            body: `{"text":"${text}","source":"${from}","target":"${to}"}`
+        }
+        setIsLoading(true)
+        fetch(`https://${process.env.REACT_APP_API_HOST}/translate`, options)
+            .then(response => response.json())
+            .then(response => setTranslation(response.translations.translation))
+            .catch(err => console.error(err))
+            .finally(() => setIsLoading(false))
+    }
+
     return (
-        <form onSubmit={e => translate(e, from, to, text, setTranslation, setIsLoading)} className='Translator container-md'>
+        <form onSubmit={translate} className='Translator container-md'>
             <div className='d-flex flex-row mt-2'>
                 <Languages selected={from} onChange={e => setFrom(e.target.value)} />
-                <button type='button'
-                    onClick={() => swapLanguages(from, setFrom, to, setTo)}
-                    className='btn btn-outline-secondary mx-2'>
+                <button type='button' onClick={swapLanguages} className='btn btn-outline-secondary mx-2'>
                     <SwapIcon />
                 </button>
                 <Languages selected={to} onChange={e => setTo(e.target.value)} />
