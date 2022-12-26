@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import LanguagePanel from '../language-panel/LanguagePanel';
+import { translate, detectLanguage } from './TranslatorRepository';
 import './Translator.css'
 
 function Translator() {
@@ -8,30 +9,6 @@ function Translator() {
     const [text, setText] = useState('')
     const [translation, setTranslation] = useState('')
     const [isLoading, setIsLoading] = useState(false)
-    const options = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-            'X-RapidAPI-Host': process.env.REACT_APP_API_HOST
-        }
-    }
-
-    async function detectLanguage(text) {
-        options.body = `{"text":"${text}"}`
-        const response = await fetch(`https://${process.env.REACT_APP_API_HOST}/language_detect`, options)
-        if (!response.ok)
-            throw new Error(response)
-        return (await response.json()).language_detection.language
-    }
-
-    async function translate(text, from, to) {
-        options.body = `{"text":"${text}","source":"${from}","target":"${to}"}`
-        const response = await fetch(`https://${process.env.REACT_APP_API_HOST}/translate`, options)
-        if (!response.ok)
-            throw new Error(response)
-        return (await response.json()).translations.translation
-    }
     
     function onTranslate(e, detectedFrom) {
         e?.preventDefault()
