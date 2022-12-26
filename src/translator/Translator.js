@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import LanguageSelect from '../language-select/LanguageSelect';
-import { ReactComponent as SwapIcon } from './swap.svg';
+import LanguagePanel from '../language-panel/LanguagePanel';
 import './Translator.css'
 
 function Translator() {
@@ -33,12 +32,6 @@ function Translator() {
             throw new Error(response)
         return (await response.json()).translations.translation
     }
-
-    function onSwapLanguages() {
-        const temp = from
-        setFrom(to)
-        setTo(temp)
-    }
     
     function onTranslate(e, detectedFrom) {
         e?.preventDefault()
@@ -59,13 +52,7 @@ function Translator() {
 
     return (
         <form onSubmit={onTranslate} className='Translator container-md'>
-            <div className='d-flex flex-row mt-2'>
-                <LanguageSelect selected={from} onChange={e => setFrom(e.target.value)} hasDetect />
-                <button type='button' onClick={onSwapLanguages} className='btn btn-outline-secondary mx-2'>
-                    <SwapIcon />
-                </button>
-                <LanguageSelect selected={to} onChange={e => setTo(e.target.value)} />
-            </div>
+            <LanguagePanel from={from} setFrom={setFrom} to={to} setTo={setTo} />
             <div className='row mt-0 g-2'>
                 <div className='col-lg'>
                     <textarea value={text} onChange={e => setText(e.target.value)} required className='form-control' rows='10' />
