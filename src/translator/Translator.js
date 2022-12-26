@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Languages from '../languages/Languages'
+import LanguageSelect from '../language-select/LanguageSelect';
 import { ReactComponent as SwapIcon } from './swap.svg';
 import './Translator.css'
 
@@ -60,11 +60,11 @@ function Translator() {
     return (
         <form onSubmit={onTranslate} className='Translator container-md'>
             <div className='d-flex flex-row mt-2'>
-                <Languages selected={from} onChange={e => setFrom(e.target.value)} hasDetect />
+                <LanguageSelect selected={from} onChange={e => setFrom(e.target.value)} hasDetect />
                 <button type='button' onClick={onSwapLanguages} className='btn btn-outline-secondary mx-2'>
                     <SwapIcon />
                 </button>
-                <Languages selected={to} onChange={e => setTo(e.target.value)} />
+                <LanguageSelect selected={to} onChange={e => setTo(e.target.value)} />
             </div>
             <div className='row mt-0 g-2'>
                 <div className='col-lg'>

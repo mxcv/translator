@@ -1,7 +1,7 @@
 import React from 'react'
 import languages from './languages.json'
 
-function Languages({selected, onChange, hasDetect}) {
+function LanguageSelect({selected, onChange, hasDetect}) {
     const options = [];
     for (let l in languages)
         options.push(<option key={l} value={l}>{languages[l]}</option>)
@@ -16,4 +16,4 @@ function Languages({selected, onChange, hasDetect}) {
     )
 }
 
-export default Languages
+export default LanguageSelect
