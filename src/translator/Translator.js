@@ -43,7 +43,7 @@ function Translator() {
                 </Col>
             </Row>
             <Row className='justify-content-end m-0 mt-2'>
-                <Button disabled={isLoading} variant='outline-primary' className='col-md-auto'>Translate</Button>
+                <Button type='submit' disabled={isLoading} variant='outline-primary' className='col-md-auto'>Translate</Button>
             </Row>
         </Form>
     )
