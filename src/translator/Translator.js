@@ -28,7 +28,7 @@ function Translator() {
     }
 
     return (
-        <form onSubmit={onTranslate} className='Translator container-md'>
+        <form onSubmit={onTranslate} className='Translator'>
             <LanguagePanel from={from} setFrom={setFrom} to={to} setTo={setTo} />
             <div className='row mt-0 g-2'>
                 <div className='col-lg'>
