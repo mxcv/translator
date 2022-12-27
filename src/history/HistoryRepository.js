@@ -7,7 +7,7 @@ export function getTranslations() {
 
 export function saveTranslation(translation) {
     const translations = getTranslations()
-    translations.push(translation)
+    translations.unshift(translation)
     localStorage.setItem(key, JSON.stringify(translations))
 }
 
