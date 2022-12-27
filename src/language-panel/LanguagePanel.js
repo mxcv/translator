@@ -1,4 +1,7 @@
 import React from 'react'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import LanguageSelect from '../language-select/LanguageSelect';
 import { ReactComponent as SwapIcon } from './swap.svg';
 
@@ -10,13 +13,15 @@ function LanguagePanel({from, setFrom, to, setTo}) {
     }
 
     return (
-        <div className='d-flex flex-row mt-2'>
-            <LanguageSelect selected={from} onChange={e => setFrom(e.target.value)} hasDetect />
-            <button type='button' onClick={onSwapLanguages} className='btn btn-outline-secondary mx-2'>
-                <SwapIcon />
-            </button>
-            <LanguageSelect selected={to} onChange={e => setTo(e.target.value)} />
-        </div>
+        <Row className='mt-2 g-2'>
+            <Col><LanguageSelect selected={from} onChange={e => setFrom(e.target.value)} hasDetect /></Col>
+            <Col xs='auto'>
+                <Button type='button' onClick={onSwapLanguages} variant='outline-secondary'>
+                    <SwapIcon />
+                </Button>
+            </Col>
+            <Col><LanguageSelect selected={to} onChange={e => setTo(e.target.value)} /></Col>
+        </Row>
     )
 }
 

@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import LanguagePanel from '../language-panel/LanguagePanel';
 import { translate, detectLanguage } from './TranslatorRepository';
 import './Translator.css'
@@ -28,20 +32,20 @@ function Translator() {
     }
 
     return (
-        <form onSubmit={onTranslate} className='Translator'>
+        <Form onSubmit={onTranslate}>
             <LanguagePanel from={from} setFrom={setFrom} to={to} setTo={setTo} />
-            <div className='row mt-0 g-2'>
-                <div className='col-lg'>
-                    <textarea value={text} onChange={e => setText(e.target.value)} required className='form-control' rows='10' />
-                </div>
-                <div className='col-lg'>
-                    <textarea value={translation} onChange={e => setTranslation(e.target.value)} disabled={isLoading} className='form-control h-100 Translator-result' readOnly placeholder='Translation' />
-                </div>
-            </div>
-            <div className='row justify-content-end m-0 mt-2'>
-                <button disabled={isLoading} className='col-md-auto btn btn-outline-primary'>Translate</button>
-            </div>
-        </form>
+            <Row className='mt-0 g-2'>
+                <Col md>
+                    <Form.Control as="textarea" value={text} onChange={e => setText(e.target.value)} required rows='10' />
+                </Col>
+                <Col md>
+                    <Form.Control as="textarea" value={translation} onChange={e => setTranslation(e.target.value)} disabled={isLoading} className='h-100 Translator-result' readOnly placeholder='Translation' />
+                </Col>
+            </Row>
+            <Row className='justify-content-end m-0 mt-2'>
+                <Button disabled={isLoading} variant='outline-primary' className='col-md-auto'>Translate</Button>
+            </Row>
+        </Form>
     )
 }
 

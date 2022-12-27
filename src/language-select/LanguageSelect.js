@@ -1,4 +1,5 @@
 import React from 'react'
+import Form from 'react-bootstrap/Form';
 import languages from './languages.json'
 
 function LanguageSelect({selected, onChange, hasDetect}) {
@@ -10,9 +11,9 @@ function LanguageSelect({selected, onChange, hasDetect}) {
         : <option key='' value='' disabled className='d-none'>Select target language</option>)
         
     return (
-        <select value={selected} onChange={onChange} required={!hasDetect} className='form-select'>
+        <Form.Select value={selected} onChange={onChange} required={!hasDetect}>
             {options}
-        </select>
+        </Form.Select>
     )
 }
 
