@@ -14,11 +14,11 @@ function Translator() {
     const [translation, setTranslation] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     
-    function onTranslate(e, detectedFrom) {
+    function onTranslate(e, from) {
         e?.preventDefault()
         setIsLoading(true)
-        if (from || detectedFrom)
-            translate(text, from ? from : detectedFrom, to)
+        if (from)
+            translate(text, from, to)
                 .then(t => setTranslation(t))
                 .catch(err => console.error(err))
                 .finally(() => setIsLoading(false))
@@ -32,7 +32,7 @@ function Translator() {
     }
 
     return (
-        <Form onSubmit={onTranslate}>
+        <Form onSubmit={e => onTranslate(e, from)}>
             <LanguagePanel from={from} setFrom={setFrom} to={to} setTo={setTo} />
             <Row className='mt-0 g-2'>
                 <Col md>
