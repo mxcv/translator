@@ -35,15 +35,17 @@ function Translator() {
         <Form onSubmit={e => onTranslate(e, from)}>
             <LanguagePanel from={from} setFrom={setFrom} to={to} setTo={setTo} />
             <Row className='mt-0 g-2'>
-                <Col md>
+                <Col sm>
                     <Form.Control as="textarea" value={text} onChange={e => setText(e.target.value)} required rows='10' />
                 </Col>
-                <Col md>
+                <Col sm>
                     <Form.Control as="textarea" value={translation} onChange={e => setTranslation(e.target.value)} disabled={isLoading} className='h-100 Translator-result' readOnly placeholder='Translation' />
                 </Col>
             </Row>
-            <Row className='justify-content-end m-0 mt-2'>
-                <Button type='submit' disabled={isLoading} variant='outline-primary' className='col-md-auto'>Translate</Button>
+            <Row className='mt-2 justify-content-end'>
+                <Col sm='auto'>
+                    <Button type='submit' disabled={isLoading} variant='primary' className='w-100'>Translate</Button>
+                </Col>
             </Row>
         </Form>
     )

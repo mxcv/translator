@@ -1,3 +1,5 @@
+import { saveTranslation } from '../history/HistoryRepository'
+
 const baseUrl = 'https://' + process.env.REACT_APP_API_HOST
 const options = {
     method: 'POST',
@@ -21,5 +23,7 @@ export async function translate(text, from, to) {
     const response = await fetch(baseUrl + '/translate', options)
     if (!response.ok)
         throw new Error(response)
-    return (await response.json()).translations.translation
+    const translation = (await response.json()).translations.translation;
+    saveTranslation({ text: text, translation: translation, from: from, to: to})
+    return translation
 }

@@ -13,7 +13,7 @@ function LanguagePanel({from, setFrom, to, setTo}) {
     }
 
     return (
-        <Row className='mt-2 g-2'>
+        <Row className='mt-2 gx-2'>
             <Col><LanguageSelect selected={from} onChange={e => setFrom(e.target.value)} hasDetect /></Col>
             <Col xs='auto'>
                 <Button type='button' onClick={onSwapLanguages} variant='outline-secondary'>
