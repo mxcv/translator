@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import LanguagePanel from '../language-panel/LanguagePanel';
+import TextareaPanel from '../textarea-panel/TextareaPanel';
 import { translate, detectLanguage } from './TranslatorRepository';
-import './Translator.css'
 
 function Translator() {
     const [from, setFrom] = useState('')
@@ -34,15 +34,8 @@ function Translator() {
     return (
         <Form onSubmit={e => onTranslate(e, from)}>
             <LanguagePanel from={from} setFrom={setFrom} to={to} setTo={setTo} />
-            <Row className='mt-0 g-2'>
-                <Col sm>
-                    <Form.Control as="textarea" value={text} onChange={e => setText(e.target.value)} required rows='10' />
-                </Col>
-                <Col sm>
-                    <Form.Control as="textarea" value={translation} onChange={e => setTranslation(e.target.value)} disabled={isLoading} className='h-100 Translator-result' readOnly placeholder='Translation' />
-                </Col>
-            </Row>
-            <Row className='mt-2 justify-content-end'>
+            <TextareaPanel text={text} setText={setText} translation={translation} isLoading={isLoading} />
+            <Row className='mt-2'>
                 <Col sm='auto'>
                     <Button type='submit' disabled={isLoading} variant='primary' className='w-100'>Translate</Button>
                 </Col>
