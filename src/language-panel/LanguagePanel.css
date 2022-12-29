@@ -1,0 +1,6 @@
+.btn-swap>img {
+    transition: filter .15s;
+}
+.btn-swap:hover>img {
+    filter: invert(1);
+}
