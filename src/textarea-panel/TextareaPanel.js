@@ -31,6 +31,7 @@ function TextareaPanel({text, setText, translation, isLoading}) {
                     ref={textRef}
                     onChange={e => setText(e.target.value)}
                     required
+                    maxLength='5000'
                     className='Textarea' />
             </Col>
             <Col sm>
