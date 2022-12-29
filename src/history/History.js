@@ -6,7 +6,11 @@ import { getTranslations, clearTranslations } from './HistoryRepository'
 
 function History() {
     const [translations, setTranslations] = useState([]);
-    useEffect(() => setTranslations(getTranslations), [])
+    
+    useEffect(() => {
+        document.title = 'Translator - History'
+        setTranslations(getTranslations)
+    }, []);
 
     function onClear() {
         clearTranslations()

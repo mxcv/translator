@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Translator from '../translator/Translator';
 import History from '../history/History';
+import logo from '../logo.svg'
 
 function App() {
     return (
@@ -11,7 +12,16 @@ function App() {
             <header>
                 <Navbar bg='light' variant='light'>
                     <Container>
-                        <Navbar.Brand href='/'>Translator</Navbar.Brand>
+                        <Navbar.Brand href='/'>
+                            <img
+                                alt=''
+                                src={logo}
+                                width='30'
+                                height='30'
+                                className='d-inline-block align-top' />
+                            {' '}
+                            Translator
+                        </Navbar.Brand>
                         <Nav className='me-auto'>
                             <Nav.Link href='/history'>History</Nav.Link>
                         </Nav>
