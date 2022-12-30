@@ -1,4 +1,4 @@
-import { getEntities, saveEntity, removeEntity, clearEntities } from '../translator/LocalStorageRepository'
+import { getEntities, saveEntity, removeEntity, clearEntities } from '../repositories/LocalStorageRepository'
 
 const name = 'favorites'
 export const getFavorites = () => getEntities(name)
