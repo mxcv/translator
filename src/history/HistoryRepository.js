@@ -1,16 +1,6 @@
-const key = 'translations'
+import { getEntities, saveEntity, clearEntities } from '../repositories/LocalStorageRepository'
 
-export function getTranslations() {
-    const translations = JSON.parse(localStorage.getItem(key))
-    return translations ? translations : []
-}
-
-export function saveTranslation(translation) {
-    const translations = getTranslations()
-    translations.unshift(translation)
-    localStorage.setItem(key, JSON.stringify(translations))
-}
-
-export function clearTranslations() {
-    localStorage.removeItem(key)
-}
+const name = 'history'
+export const getTranslations = () => getEntities(name)
+export const saveTranslation = (translation) => saveEntity(name, translation)
+export const clearTranslations = () => clearEntities(name)

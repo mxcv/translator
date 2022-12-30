@@ -27,8 +27,8 @@ function History() {
                     </div>
             }
             {
-                translations.map((t, i) =>
-                <Table key={i} striped="columns" bordered>
+                translations.map(t =>
+                <Table key={t.id} striped="columns" bordered>
                     <thead>
                         <tr>
                             <th>{languages[t.from]}</th>
