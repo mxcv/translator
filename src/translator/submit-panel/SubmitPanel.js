@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { saveFavorite } from '../favorites/FavoritesRepository'
+import { saveFavorite } from '../../favorites/FavoritesRepository'
 import heart from './heart.svg'
 
 function SubmitPanel({ savedTranslation, setSavedTranslation, isLoading }) {

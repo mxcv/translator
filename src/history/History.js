@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-import languages from '../language-select/languages.json'
+import languages from '../translator/language-select/languages.json'
 import { getTranslations, clearTranslations } from './HistoryRepository'
 
 function History() {

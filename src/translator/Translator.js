@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
-import LanguagePanel from '../language-panel/LanguagePanel';
-import TextareaPanel from '../textarea-panel/TextareaPanel';
-import SubmitPanel from '../submit-panel/SubmitPanel';
+import LanguagePanel from './language-panel/LanguagePanel';
+import TextareaPanel from './textarea-panel/TextareaPanel';
+import SubmitPanel from './submit-panel/SubmitPanel';
 import { translate, detectLanguage } from './TranslatorRepository';
 
 function Translator() {
