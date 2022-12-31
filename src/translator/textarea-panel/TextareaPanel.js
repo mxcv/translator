@@ -1,7 +1,5 @@
 import React, { createRef, useEffect } from 'react'
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Form, Row, Col } from 'react-bootstrap'
 import './TextareaPanel.css'
 
 function TextareaPanel({text, setText, translation, isLoading}) {

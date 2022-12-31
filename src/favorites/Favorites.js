@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
+import { Table, Row, Col, Button } from 'react-bootstrap'
 import { getFavorites, removeFavorite, clearFavorites } from './FavoritesRepository'
 import languages from '../translator/language-select/languages.json'
 import cross from './cross.svg'

@@ -1,10 +1,8 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Translator from '../translator/Translator';
-import History from '../history/History';
-import Favorites from '../favorites/Favorites';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Container, Nav, Navbar } from 'react-bootstrap'
+import Translator from '../translator/Translator'
+import History from '../history/History'
+import Favorites from '../favorites/Favorites'
 import logo from '../logo.svg'
 
 function App() {

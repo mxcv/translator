@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form'
 import languages from './languages.json'
 
 function LanguageSelect({selected, onChange, hasDetect}) {

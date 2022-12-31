@@ -1,9 +1,7 @@
 import React from 'react'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import LanguageSelect from '../language-select/LanguageSelect';
-import swap from './swap.svg';
+import { Row, Col, Button } from 'react-bootstrap/'
+import LanguageSelect from '../language-select/LanguageSelect'
+import swap from './swap.svg'
 import './LanguagePanel.css'
 
 function LanguagePanel({from, setFrom, to, setTo}) {
