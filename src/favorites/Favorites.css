@@ -1,0 +1,8 @@
+.btn-remove>img {
+    transition: filter .15s;
+    filter: invert(28%) sepia(80%) saturate(1890%) hue-rotate(332deg) brightness(89%) contrast(94%);
+}
+.btn-remove:hover>img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(264deg) brightness(107%) contrast(109%);
+}
+/* #dc3545 */

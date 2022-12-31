@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Translator from '../translator/Translator';
 import History from '../history/History';
+import Favorites from '../favorites/Favorites';
 import logo from '../logo.svg'
 
 function App() {
@@ -13,17 +14,13 @@ function App() {
                 <Navbar bg='light' variant='light'>
                     <Container>
                         <Navbar.Brand href='/'>
-                            <img
-                                alt=''
-                                src={logo}
-                                width='30'
-                                height='30'
-                                className='d-inline-block align-top' />
+                            <img src={logo} width='30' height='30' alt='logo' className='d-inline-block align-top' />
                             {' '}
                             Translator
                         </Navbar.Brand>
                         <Nav className='me-auto'>
                             <Nav.Link href='/history'>History</Nav.Link>
+                            <Nav.Link href='/favorites'>Favorites</Nav.Link>
                         </Nav>
                     </Container>
                 </Navbar>
@@ -34,6 +31,7 @@ function App() {
                         <Routes>
                             <Route path='/' element={<Translator />}></Route>
                             <Route path='/history' element={<History />}></Route>
+                            <Route path='/favorites' element={<Favorites />}></Route>
                         </Routes>
                     </BrowserRouter>
                 </Container>

@@ -9,7 +9,7 @@ function History() {
     
     useEffect(() => {
         document.title = 'Translator - History'
-        setTranslations(getTranslations)
+        setTranslations(getTranslations())
     }, []);
 
     function onClear() {
