@@ -3,7 +3,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 import Translator from '../translator/Translator'
 import History from '../history/History'
 import Favorites from '../favorites/Favorites'
-import logo from '../logo.svg'
+import logo from './logo.svg'
 
 function App() {
     return (
