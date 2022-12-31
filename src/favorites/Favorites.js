@@ -28,11 +28,9 @@ function Favorites() {
             <h1>Favorites</h1>
             {
                 !favorites?.length ? <em>Nothing to show</em> :
-                    <div>
-                        <div className='d-flex align-items-end justify-content-between mb-3'>
-                            <div>Found: {favorites.length}</div>
-                            <Button variant='danger' onClick={onClear}>Clear favorites</Button>
-                        </div>
+                    <div className='d-flex align-items-end justify-content-between mb-3'>
+                        <div>Found: {favorites.length}</div>
+                        <Button variant='danger' onClick={onClear}>Clear favorites</Button>
                     </div>
             }
             {
@@ -56,7 +54,7 @@ function Favorites() {
                     </Col>
                     <Col xs='auto'>
                         <Button variant='outline-danger' onClick={() => onRemove(t.id)} className='btn-remove h-100'>
-                            <img src={cross} width='22' height='22' alt='cross' />
+                            <img src={cross} width='20' height='20' alt='cross' />
                         </Button>
                     </Col>
                 </Row>
