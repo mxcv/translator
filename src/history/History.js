@@ -18,8 +18,9 @@ function History() {
 
     return (
         <div>
+            <h1>History</h1>
             {
-                !translations?.length ? <h2>Nothing to show</h2> :
+                !translations?.length ? <em>Nothing to show</em> :
                     <div className='d-flex align-items-end justify-content-between mb-3'>
                         <div>Found: {translations.length}</div>
                         <Button variant='danger' onClick={onClear}>Clear history</Button>

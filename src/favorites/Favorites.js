@@ -25,11 +25,14 @@ function Favorites() {
 
     return (
         <div>
+            <h1>Favorites</h1>
             {
-                !favorites?.length ? <h2>Nothing to show</h2> :
-                    <div className='d-flex align-items-end justify-content-between mb-3'>
-                        <div>Found: {favorites.length}</div>
-                        <Button variant='danger' onClick={onClear}>Clear favorites</Button>
+                !favorites?.length ? <em>Nothing to show</em> :
+                    <div>
+                        <div className='d-flex align-items-end justify-content-between mb-3'>
+                            <div>Found: {favorites.length}</div>
+                            <Button variant='danger' onClick={onClear}>Clear favorites</Button>
+                        </div>
                     </div>
             }
             {
