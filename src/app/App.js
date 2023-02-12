@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import Translator from '../translator/Translator'
 import History from '../history/History'
@@ -7,34 +7,32 @@ import logo from './logo.svg'
 
 function App() {
     return (
-        <div>
+        <BrowserRouter>
             <header>
                 <Navbar bg='light' variant='light'>
                     <Container>
-                        <Navbar.Brand href='/'>
+                        <Navbar.Brand as={Link} to='/'>
                             <img src={logo} width='30' height='30' alt='logo' className='d-inline-block align-top' />
                             {' '}
                             Translator
                         </Navbar.Brand>
                         <Nav className='me-auto'>
-                            <Nav.Link href='/history'>History</Nav.Link>
-                            <Nav.Link href='/favorites'>Favorites</Nav.Link>
+                            <Nav.Link as={Link} to='/history'>History</Nav.Link>
+                            <Nav.Link as={Link} to='/favorites'>Favorites</Nav.Link>
                         </Nav>
                     </Container>
                 </Navbar>
             </header>
             <main className='mt-3'>
                 <Container>
-                    <BrowserRouter>
                         <Routes>
                             <Route path='/' element={<Translator />}></Route>
                             <Route path='/history' element={<History />}></Route>
                             <Route path='/favorites' element={<Favorites />}></Route>
                         </Routes>
-                    </BrowserRouter>
                 </Container>
             </main>
-        </div>
+        </BrowserRouter>
     );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import LanguagePanel from './language-panel/LanguagePanel'
 import TextareaPanel from './textarea-panel/TextareaPanel'
@@ -12,6 +12,8 @@ function Translator() {
     const [translation, setTranslation] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [savedTranslation, setSavedTranslation] = useState(null)
+
+    useEffect(() => { document.title = 'Translator' }, []);
 
     function onTranslate(e, from) {
         e?.preventDefault()
